@@ -21,9 +21,9 @@ def crawl(location)
             item = {}
             item[:title] = rental_home.css('p a.result-title').text
             item[:address] = rental_home.css('p span.result-hood').text.split.join.delete('(\(|\))')
-            item[:mont_rent] = rental_home.css('p span.result-price').text.delete('^0-9').to_i
+            item[:month_rent] = rental_home.css('p span.result-price').text.delete('^0-9').to_i
             item[:url] = rental_home.css('a.result-image')[0]['href']
-            scrapped_data.push(item[:title] + ", " + item[:address] + ", $" + item[:mont_rent].to_s + ", " + item[:url])
+            scrapped_data.push(item[:title] + ", " + item[:address] + ", $" + item[:month_rent].to_s + ", " + item[:url])
         end
         counter += items_per_page
     end
