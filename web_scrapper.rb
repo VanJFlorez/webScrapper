@@ -4,7 +4,6 @@ require 'byebug'
 
 def crawl(location)
     scrapped_data = []
-    location = "atlanta"
     url = 'https://' + location + '.craigslist.org/search/apa?min_bedrooms=3&max_bedrooms=3&min_bathrooms=2&max_bathrooms=2'
     raw_page = HTTParty.get(url)
     dom_page = Nokogiri::HTML(raw_page)
@@ -24,7 +23,7 @@ def crawl(location)
             item[:address] = rental_home.css('p span.result-hood').text.split.join.delete('(\(|\))')
             item[:mont_rent] = rental_home.css('p span.result-price').text.delete('^0-9').to_i
             item[:url] = rental_home.css('a.result-image')[0]['href']
-            scrapped_data.push(item)
+            scrapped_data.push(item[:title] + ", " + item[:address] + ", $" + item[:mont_rent].to_s + ", " + item[:url])
         end
         counter += items_per_page
     end

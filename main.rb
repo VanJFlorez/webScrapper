@@ -2,10 +2,12 @@ require 'byebug'
 require_relative 'web_scrapper.rb'
 
 def main
-    location = 'columbia'
-
+    location = 'boone'
     data = crawl(location)
-    File.open("scraping.csv", "a+") { |f| f.write("buahahahahaha\n") }
+    data.each do |row|
+        File.open("data_scraped.csv", "a+") {  |f| f.write(row + "\n") }
+    end
+
 end
 
 main
