@@ -1,3 +1,5 @@
 .vscode
 *byebug_*
 Gemfile.lock
+data_scraped.csv
+.~lock.data_scraped.csv#
