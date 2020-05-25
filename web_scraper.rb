@@ -1,11 +1,13 @@
 require 'byebug'
 require 'nokogiri'
 require 'httparty'
-require_relative 'web_scrapper.rb'
 
 def main
     begin
         location = ARGV[0]
+        if location.nil?
+            location = ""
+        end
         data = crawl(location)
 
         File.open("data_scraped.csv", "w") {  |f| f.write("title, address, month_rent, url\n") }
