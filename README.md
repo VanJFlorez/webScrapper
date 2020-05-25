@@ -1,7 +1,9 @@
 # A RUBY WEB SCRAPER
-## Dendencies
+## Dependencies
 - Nokogiri
 - HTTParty
 
 ## Usage
+~~~bash
 .\main.rb <location_name>
+~~~
